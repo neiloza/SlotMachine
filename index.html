@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucky Gold Slots</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="bg-lights" aria-hidden="true"></div>
+
+  <main id="slot-screen" class="screen active">
+    <header class="topbar">
+      <h1 class="neon-title">Lucky Gold Slots</h1>
+      <div class="balance-pill" aria-live="polite">
+        <span class="coin-icon" aria-hidden="true"></span>
+        <span id="balance">0</span>
+      </div>
+    </header>
+
+    <section class="cabinet">
+      <div class="cabinet-trim top-trim"></div>
+
+      <div class="reels-frame">
+        <svg class="paylines" viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true">
+          <line class="payline" data-line="row-top"    x1="0" y1="50"  x2="300" y2="50" />
+          <line class="payline" data-line="row-mid"    x1="0" y1="150" x2="300" y2="150" />
+          <line class="payline" data-line="row-bot"    x1="0" y1="250" x2="300" y2="250" />
+          <line class="payline" data-line="diag-tl-br" x1="50" y1="50"  x2="250" y2="250" />
+          <line class="payline" data-line="diag-bl-tr" x1="50" y1="250" x2="250" y2="50" />
+        </svg>
+
+        <div class="reels" id="reels">
+          <div class="reel" data-reel="0">
+            <div class="cell" data-row="0"></div>
+            <div class="cell" data-row="1"></div>
+            <div class="cell" data-row="2"></div>
+          </div>
+          <div class="reel" data-reel="1">
+            <div class="cell" data-row="0"></div>
+            <div class="cell" data-row="1"></div>
+            <div class="cell" data-row="2"></div>
+          </div>
+          <div class="reel" data-reel="2">
+            <div class="cell" data-row="0"></div>
+            <div class="cell" data-row="1"></div>
+            <div class="cell" data-row="2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="display-row">
+        <div class="display-box">
+          <div class="display-label">Last Win</div>
+          <div class="display-value" id="last-win">0</div>
+        </div>
+        <div class="display-box">
+          <div class="display-label">Bet</div>
+          <div class="display-value" id="total-bet">1</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <div class="control-label">Lines</div>
+          <div class="btn-row" role="radiogroup" aria-label="Coins to bet">
+            <button class="bet-btn active" data-bet="1" role="radio" aria-checked="true">1<small>coin</small></button>
+            <button class="bet-btn" data-bet="2" role="radio" aria-checked="false">2<small>coins</small></button>
+            <button class="bet-btn" data-bet="3" role="radio" aria-checked="false">3<small>coins</small></button>
+          </div>
+          <div class="control-hint" id="lines-hint">Middle row only</div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">Multiplier</div>
+          <div class="btn-row" role="radiogroup" aria-label="Bet multiplier">
+            <button class="mult-btn active" data-mult="1" role="radio" aria-checked="true">1x</button>
+            <button class="mult-btn" data-mult="3" role="radio" aria-checked="false">3x</button>
+            <button class="mult-btn" data-mult="5" role="radio" aria-checked="false">5x</button>
+            <button class="mult-btn" data-mult="10" role="radio" aria-checked="false">10x</button>
+          </div>
+          <div class="control-hint">Multiplies cost and payout</div>
+        </div>
+
+        <button id="spin-btn" class="spin-btn">
+          <span class="spin-text">SPIN</span>
+        </button>
+
+        <button id="get-gold-btn" class="get-gold-btn">
+          Get More Gold
+        </button>
+      </div>
+
+      <div class="cabinet-trim bottom-trim"></div>
+    </section>
+
+    <button class="paytable-toggle" id="paytable-toggle" aria-expanded="false">Paytable</button>
+
+    <section class="paytable" id="paytable" hidden>
+      <h2>Paytable</h2>
+      <p class="paytable-note">3 matching symbols on an active payline.</p>
+      <table>
+        <thead>
+          <tr><th>Symbol</th><th>3 in a row</th></tr>
+        </thead>
+        <tbody id="paytable-body"></tbody>
+      </table>
+      <p class="paytable-note small">Wins multiplied by your bet multiplier. House always wins long-term &mdash; play smart.</p>
+    </section>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+  </main>
+
+  <section id="clicker-screen" class="screen" hidden>
+    <header class="topbar">
+      <h1 class="neon-title small">Gold Mine</h1>
+      <div class="balance-pill" aria-live="polite">
+        <span class="coin-icon" aria-hidden="true"></span>
+        <span id="clicker-balance">0</span>
+      </div>
+    </header>
+
+    <div class="clicker-area">
+      <p class="clicker-instructions">Tap the coin to earn gold. No ads. No microtransactions. Just clicks.</p>
+      <button id="big-coin" class="big-coin" aria-label="Click to earn one gold coin">
+        <span class="big-coin-face">
+          <span class="big-coin-mark">$</span>
+        </span>
+        <span class="big-coin-shadow" aria-hidden="true"></span>
+      </button>
+      <div class="clicker-stats">
+        <div><span class="stat-label">Earned this visit:</span> <span id="clicker-session">0</span></div>
+      </div>
+      <button id="back-to-slots" class="ghost-btn">Back to Slots</button>
+    </div>
+  </section>
+
+  <div id="win-banner" class="win-banner" hidden>
+    <span class="win-banner-text"></span>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
