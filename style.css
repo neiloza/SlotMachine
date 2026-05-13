@@ -479,7 +479,6 @@ button, select, [role="radio"] {
 
 .controls .spin-btn,
 .controls .get-gold-btn { grid-column: 1 / -1; }
-.controls .get-gold-btn { order: -1; }
 
 .btn-row {
   display: flex;
