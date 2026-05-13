@@ -207,7 +207,7 @@
   function renderSpinButton() {
     const canAfford = state.gold >= spinCost();
     spinBtn.disabled = state.spinning || !canAfford;
-    getGoldBtn.classList.toggle("visible", state.gold < spinCost() && !state.spinning);
+    getGoldBtn.classList.toggle("spinning", state.spinning);
   }
 
   function setMessage(text) {
