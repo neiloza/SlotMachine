@@ -555,11 +555,16 @@ button, select, [role="radio"] {
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 0 0 14px var(--gold);
-  display: none;
-  transition: transform 0.1s ease;
+  display: block;
+  transition: transform 0.1s ease, filter 0.2s ease, opacity 0.2s ease;
 }
-.get-gold-btn.visible { display: block; }
-.get-gold-btn:hover { transform: translateY(-1px); }
+.get-gold-btn.spinning {
+  filter: grayscale(0.8) brightness(0.7);
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: default;
+}
+.get-gold-btn:not(.spinning):hover { transform: translateY(-1px); }
 
 /* ---------- Paytable ---------- */
 .paytable-toggle {
