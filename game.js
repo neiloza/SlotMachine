@@ -42,11 +42,21 @@
 
   const MULTIPLIERS = [1, 3, 5, 10];
 
+  const THEMES = {
+    "vegas":      { label: "Classic Vegas", themeColor: "#150109" },
+    "cozy":       { label: "Cozy Wood",     themeColor: "#1a0f06" },
+    "neon":       { label: "Neon Nights",   themeColor: "#06061a" },
+    "forest":     { label: "Forest",        themeColor: "#0a1a08" },
+    "red-carpet": { label: "Red Carpet",    themeColor: "#0a0204" },
+  };
+  const DEFAULT_THEME = "vegas";
+
   // ---------- State ----------
   const state = {
     gold: STARTING_GOLD,
     bet: 1,
     multiplier: 1,
+    theme: DEFAULT_THEME,
     spinning: false,
     grid: makeRandomGrid(),
     clickerSession: 0,
@@ -63,6 +73,7 @@
       }
       if ([1,2,3].includes(data.bet)) state.bet = data.bet;
       if (MULTIPLIERS.includes(data.multiplier)) state.multiplier = data.multiplier;
+      if (typeof data.theme === "string" && THEMES[data.theme]) state.theme = data.theme;
     } catch (e) {
       // ignore corrupted storage
     }
@@ -74,6 +85,7 @@
         gold: state.gold,
         bet: state.bet,
         multiplier: state.multiplier,
+        theme: state.theme,
       }));
     } catch (e) {
       // storage might be full or disabled; non-fatal
@@ -107,6 +119,8 @@
   const clickerSessionEl = $("#clicker-session");
   const winBanner = $("#win-banner");
   const winBannerText = $(".win-banner-text", winBanner);
+  const themeSelect = $("#theme-select");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
 
   // ---------- Helpers ----------
   function pickSymbol() {
@@ -191,6 +205,15 @@
 
   function setMessage(text) {
     messageEl.textContent = text;
+  }
+
+  function applyTheme(theme) {
+    if (!THEMES[theme]) theme = DEFAULT_THEME;
+    state.theme = theme;
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
+    if (themeMeta) themeMeta.setAttribute("content", THEMES[theme].themeColor);
+    if (themeSelect && themeSelect.value !== theme) themeSelect.value = theme;
   }
 
   // ---------- Spin flow ----------
@@ -363,6 +386,11 @@
 
     bigCoin.addEventListener("click", clickCoin);
 
+    themeSelect.addEventListener("change", () => {
+      applyTheme(themeSelect.value);
+      save();
+    });
+
     paytableToggle.addEventListener("click", () => {
       const open = paytable.hasAttribute("hidden") ? true : false;
       if (open) {
@@ -388,6 +416,7 @@
   // ---------- Init ----------
   function init() {
     load();
+    applyTheme(state.theme);
     renderGrid();
     renderBalance();
     renderBet();

@@ -3,8 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#150109" />
   <title>Lucky Gold Slots</title>
+  <meta name="description" content="A free, ad-free slot machine with a built-in click-to-earn gold mine. A healthier alternative to predatory slot games — no microtransactions, no manipulation." />
+  <link rel="canonical" href="https://slotmachine.thewizardofoza.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lucky Gold Slots" />
+  <meta property="og:description" content="A free, ad-free slot machine with a built-in click-to-earn gold mine. No microtransactions, no manipulation." />
+  <meta property="og:url" content="https://slotmachine.thewizardofoza.com/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lucky Gold Slots" />
+  <meta name="twitter:description" content="A free, ad-free slot machine with a built-in click-to-earn gold mine." />
+  <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y="54" font-size="56">🎰</text></svg>' />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem("luckyGoldSlots:v1");
+        if (!raw) return;
+        var data = JSON.parse(raw);
+        var allowed = ["vegas", "cozy", "neon", "forest", "red-carpet"];
+        if (data && allowed.indexOf(data.theme) >= 0) {
+          document.documentElement.setAttribute("data-theme", data.theme);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div id="bg-lights" aria-hidden="true"></div>
@@ -17,6 +41,17 @@
         <span id="balance">0</span>
       </div>
     </header>
+
+    <div class="theme-bar">
+      <label for="theme-select">Theme</label>
+      <select id="theme-select" aria-label="Choose visual theme">
+        <option value="vegas">Classic Vegas</option>
+        <option value="cozy">Cozy Wood</option>
+        <option value="neon">Neon Nights</option>
+        <option value="forest">Forest</option>
+        <option value="red-carpet">Red Carpet</option>
+      </select>
+    </div>
 
     <section class="cabinet">
       <div class="cabinet-trim top-trim"></div>

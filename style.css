@@ -1,17 +1,133 @@
-:root {
-  --gold:        #ffd24a;
-  --gold-deep:   #c79219;
-  --gold-glow:   #ffe78a;
-  --red:         #c1132f;
-  --red-deep:    #6a0413;
-  --red-dark:    #2a0006;
-  --bg:          #150109;
-  --bg-2:        #2a0712;
-  --cream:       #f7e6b0;
-  --ink:         #1a0205;
-  --neon-pink:   #ff3b6b;
-  --neon-cyan:   #5ce6ff;
-  --shadow-deep: 0 8px 28px rgba(0,0,0,0.55);
+:root,
+[data-theme="vegas"] {
+  --gold:          #ffd24a;
+  --gold-deep:     #c79219;
+  --gold-glow:     #ffe78a;
+  --red:           #c1132f;
+  --red-deep:      #6a0413;
+  --red-dark:      #2a0006;
+  --bg:            #150109;
+  --bg-2:          #2a0712;
+  --bg-deep:       #08000a;
+  --cream:         #f7e6b0;
+  --ink:           #1a0205;
+  --neon-pink:     #ff3b6b;
+  --neon-cyan:     #5ce6ff;
+  --cabinet-bg-1:  #3a0010;
+  --cabinet-bg-2:  #1a0006;
+  --reel-bg-1:     #f7e6b0;
+  --reel-bg-2:     #d9b766;
+  --reel-frame-bg: #0c0205;
+  --btn-bg-1:      #5a0a18;
+  --btn-bg-2:      #2c0309;
+  --spin-bright:   #ff5468;
+  --cell-divider:  rgba(106, 4, 19, 0.35);
+  --text-on-gold:  var(--red-deep);
+  --shadow-deep:   0 8px 28px rgba(0,0,0,0.55);
+}
+
+[data-theme="cozy"] {
+  --gold:          #d99b4a;
+  --gold-deep:     #8b5a1f;
+  --gold-glow:     #f0c478;
+  --red:           #a04030;
+  --red-deep:      #5a1f15;
+  --red-dark:      #2a0c08;
+  --bg:            #1a0f06;
+  --bg-2:          #2d1c0a;
+  --bg-deep:       #100804;
+  --cream:         #f0d8a6;
+  --ink:           #0a0402;
+  --neon-pink:     #e09060;
+  --neon-cyan:     #e4b266;
+  --cabinet-bg-1:  #4a2818;
+  --cabinet-bg-2:  #2a1408;
+  --reel-bg-1:     #ead4a0;
+  --reel-bg-2:     #c19b62;
+  --reel-frame-bg: #1a0d04;
+  --btn-bg-1:      #5a3820;
+  --btn-bg-2:      #2e1a0a;
+  --spin-bright:   #e09060;
+  --cell-divider:  rgba(90, 56, 32, 0.4);
+  --text-on-gold:  #3a1a08;
+}
+
+[data-theme="neon"] {
+  --gold:          #ffe600;
+  --gold-deep:     #b8a800;
+  --gold-glow:     #ffff80;
+  --red:           #ff10aa;
+  --red-deep:      #80005a;
+  --red-dark:      #30001a;
+  --bg:            #06061a;
+  --bg-2:          #1a0a3e;
+  --bg-deep:       #02020a;
+  --cream:         #e8eeff;
+  --ink:           #03030f;
+  --neon-pink:     #ff2bd0;
+  --neon-cyan:     #00ffff;
+  --cabinet-bg-1:  #1a0a3e;
+  --cabinet-bg-2:  #060418;
+  --reel-bg-1:     #1b1b3a;
+  --reel-bg-2:     #0a0a1a;
+  --reel-frame-bg: #03030c;
+  --btn-bg-1:      #2a0a5a;
+  --btn-bg-2:      #100024;
+  --spin-bright:   #ff60dd;
+  --cell-divider:  rgba(0, 255, 255, 0.4);
+  --text-on-gold:  #200044;
+}
+
+[data-theme="forest"] {
+  --gold:          #d4a04a;
+  --gold-deep:     #7a5a20;
+  --gold-glow:     #f0c478;
+  --red:           #2d6b2a;
+  --red-deep:      #143a0c;
+  --red-dark:      #081c04;
+  --bg:            #0a1a08;
+  --bg-2:          #142a14;
+  --bg-deep:       #040c04;
+  --cream:         #e8e0c8;
+  --ink:           #050a04;
+  --neon-pink:     #b8d460;
+  --neon-cyan:     #8acc88;
+  --cabinet-bg-1:  #1f3a14;
+  --cabinet-bg-2:  #0a1a08;
+  --reel-bg-1:     #ece2c0;
+  --reel-bg-2:     #b09870;
+  --reel-frame-bg: #0a1408;
+  --btn-bg-1:      #2d4a20;
+  --btn-bg-2:      #14260c;
+  --spin-bright:   #6ba858;
+  --cell-divider:  rgba(45, 107, 42, 0.4);
+  --text-on-gold:  #1a3008;
+}
+
+[data-theme="red-carpet"] {
+  --gold:          #e8c878;
+  --gold-deep:     #a08838;
+  --gold-glow:     #f4dca0;
+  --red:           #8a0820;
+  --red-deep:      #4a0410;
+  --red-dark:      #200208;
+  --bg:            #0a0204;
+  --bg-2:          #1f0510;
+  --bg-deep:       #050102;
+  --cream:         #f5e8d0;
+  --ink:           #050102;
+  --neon-pink:     #c1132f;
+  --neon-cyan:     #e8c878;
+  --cabinet-bg-1:  #2a0810;
+  --cabinet-bg-2:  #100204;
+  --reel-bg-1:     #f5e8d0;
+  --reel-bg-2:     #c4a878;
+  --reel-frame-bg: #050104;
+  --btn-bg-1:      #4a0c1c;
+  --btn-bg-2:      #200408;
+  --spin-bright:   #d83048;
+  --cell-divider:  rgba(138, 8, 32, 0.4);
+  --text-on-gold:  #3a0008;
 }
 
 * { box-sizing: border-box; }
@@ -20,7 +136,8 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: radial-gradient(circle at 50% 0%, var(--bg-2) 0%, var(--bg) 55%, #08000a 100%);
+  background: radial-gradient(circle at 50% 0%, var(--bg-2) 0%, var(--bg) 55%, var(--bg-deep) 100%);
+  transition: background 0.4s ease;
   font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
   color: var(--cream);
   overflow-x: hidden;
@@ -113,13 +230,13 @@ html, body {
   font-weight: 900;
   font-size: 13px;
   line-height: 22px;
-  color: var(--red-deep);
+  color: var(--text-on-gold);
 }
 
 /* ---------- Slot cabinet ---------- */
 .cabinet {
   background:
-    linear-gradient(180deg, #3a0010 0%, #1a0006 100%);
+    linear-gradient(180deg, var(--cabinet-bg-1) 0%, var(--cabinet-bg-2) 100%);
   border-radius: 24px;
   padding: 16px;
   border: 3px solid var(--gold);
@@ -163,7 +280,7 @@ html, body {
 
 .reels-frame {
   position: relative;
-  background: #0c0205;
+  background: var(--reel-frame-bg);
   border: 4px solid var(--gold-deep);
   border-radius: 14px;
   padding: 10px;
@@ -181,7 +298,7 @@ html, body {
 }
 
 .reel {
-  background: linear-gradient(180deg, #f7e6b0 0%, #d9b766 100%);
+  background: linear-gradient(180deg, var(--reel-bg-1) 0%, var(--reel-bg-2) 100%);
   border: 2px solid var(--gold-deep);
   border-radius: 10px;
   overflow: hidden;
@@ -197,7 +314,7 @@ html, body {
   justify-content: center;
   font-size: clamp(40px, 11vw, 76px);
   line-height: 1;
-  border-bottom: 2px dashed rgba(106, 4, 19, 0.35);
+  border-bottom: 2px dashed var(--cell-divider);
   background:
     linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0)) no-repeat top/100% 18px,
     transparent;
@@ -256,7 +373,7 @@ html, body {
   margin-top: 14px;
 }
 .display-box {
-  background: #0c0205;
+  background: var(--reel-frame-bg);
   border: 2px solid var(--gold-deep);
   border-radius: 10px;
   padding: 8px 12px;
@@ -315,7 +432,7 @@ html, body {
 }
 
 .bet-btn, .mult-btn {
-  background: linear-gradient(180deg, #5a0a18 0%, #2c0309 100%);
+  background: linear-gradient(180deg, var(--btn-bg-1) 0%, var(--btn-bg-2) 100%);
   color: var(--cream);
   border: 2px solid var(--gold-deep);
   border-radius: 10px;
@@ -339,14 +456,14 @@ html, body {
 .bet-btn:hover, .mult-btn:hover { transform: translateY(-1px); }
 .bet-btn.active, .mult-btn.active {
   background: linear-gradient(180deg, var(--gold-glow) 0%, var(--gold-deep) 100%);
-  color: var(--red-deep);
+  color: var(--text-on-gold);
   border-color: var(--gold);
   box-shadow: 0 0 12px var(--gold), inset 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .spin-btn {
   margin-top: 8px;
-  background: radial-gradient(circle at 30% 30%, #ff5468 0%, var(--red) 50%, var(--red-deep) 100%);
+  background: radial-gradient(circle at 30% 30%, var(--spin-bright) 0%, var(--red) 50%, var(--red-deep) 100%);
   color: var(--gold-glow);
   border: 3px solid var(--gold);
   border-radius: 999px;
@@ -372,7 +489,7 @@ html, body {
 .get-gold-btn {
   margin-top: 4px;
   background: linear-gradient(180deg, var(--gold-glow), var(--gold-deep));
-  color: var(--red-deep);
+  color: var(--text-on-gold);
   border: 2px solid var(--gold);
   border-radius: 12px;
   padding: 12px;
@@ -492,7 +609,7 @@ html, body {
 .big-coin-mark {
   font-family: "Impact", sans-serif;
   font-size: 140px;
-  color: var(--red-deep);
+  color: var(--text-on-gold);
   text-shadow: 2px 2px 0 var(--gold-glow);
   line-height: 1;
 }
@@ -555,7 +672,7 @@ html, body {
 }
 .win-banner-text {
   background: linear-gradient(180deg, var(--gold-glow), var(--gold) 50%, var(--gold-deep));
-  color: var(--red-deep);
+  color: var(--text-on-gold);
   border: 4px solid var(--red);
   border-radius: 16px;
   padding: 18px 40px;
@@ -571,6 +688,58 @@ html, body {
   20%  { transform: scale(1.15); opacity: 1; }
   80%  { transform: scale(1); opacity: 1; }
   100% { transform: scale(1); opacity: 0; }
+}
+
+/* ---------- Theme selector ---------- */
+.theme-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: -4px 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.95;
+}
+
+.theme-select {
+  background: linear-gradient(180deg, var(--btn-bg-1) 0%, var(--btn-bg-2) 100%);
+  color: var(--cream);
+  border: 2px solid var(--gold-deep);
+  border-radius: 8px;
+  padding: 5px 28px 5px 10px;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(180deg, var(--btn-bg-1) 0%, var(--btn-bg-2) 100%),
+    linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+    linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+  background-position:
+    0 0,
+    calc(100% - 14px) calc(50% + 1px),
+    calc(100% - 8px) calc(50% + 1px);
+  background-size:
+    100% 100%,
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.theme-select:hover, .theme-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  outline: none;
+}
+.theme-select option {
+  background: var(--reel-frame-bg);
+  color: var(--cream);
 }
 
 /* ---------- Responsive tweaks ---------- */
