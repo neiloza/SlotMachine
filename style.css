@@ -141,6 +141,12 @@ html, body {
   font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
   color: var(--cream);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+button, select, [role="radio"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #bg-lights {
@@ -172,6 +178,9 @@ html, body {
   max-width: 720px;
   margin: 0 auto;
   padding: 18px 14px 60px;
+  padding-left:  max(14px, env(safe-area-inset-left));
+  padding-right: max(14px, env(safe-area-inset-right));
+  padding-top:   max(18px, env(safe-area-inset-top));
   display: none;
 }
 .screen.active { display: block; }
@@ -180,6 +189,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 14px;
 }
 
@@ -742,7 +753,9 @@ html, body {
   color: var(--cream);
 }
 
-/* ---------- Responsive tweaks ---------- */
+/* ---------- Responsive ---------- */
+
+/* Mobile portrait (default phone) */
 @media (max-width: 480px) {
   .neon-title { font-size: 26px; }
   .balance-pill { font-size: 16px; padding: 5px 10px; }
@@ -752,4 +765,133 @@ html, body {
   .big-coin { width: 200px; height: 200px; }
   .big-coin-mark { font-size: 100px; }
   .win-banner-text { font-size: 28px; padding: 14px 24px; }
+}
+
+/* Very narrow phones (iPhone SE 1st gen, older Androids ~320-360px) */
+@media (max-width: 360px) {
+  .screen { padding-left: 10px; padding-right: 10px; padding-bottom: 40px; }
+  .neon-title { font-size: 22px; letter-spacing: 0.02em; }
+  .balance-pill { font-size: 14px; padding: 4px 9px; }
+  .coin-icon { width: 18px; height: 18px; }
+  .coin-icon::after { font-size: 11px; line-height: 18px; }
+  .theme-bar { font-size: 10px; }
+  .theme-select { font-size: 12px; padding: 4px 24px 4px 8px; }
+  .cabinet { padding: 12px; }
+  .cell { font-size: clamp(34px, 12vw, 56px); }
+  .display-value { font-size: 18px; }
+  .display-label { font-size: 9px; letter-spacing: 0.15em; }
+  .bet-btn, .mult-btn { min-width: 48px; padding: 5px 8px; font-size: 13px; }
+  .bet-btn small, .mult-btn small { font-size: 8px; }
+  .spin-btn { font-size: 18px; padding: 12px; }
+  .get-gold-btn { padding: 10px; font-size: 14px; }
+}
+
+/* Tablet portrait + small landscape — more breathing room */
+@media (min-width: 600px) and (orientation: portrait),
+       (min-width: 900px) {
+  .screen { max-width: 780px; padding: 24px 22px 60px; }
+  .neon-title { font-size: 42px; }
+  .balance-pill { font-size: 22px; padding: 7px 16px; }
+  .coin-icon { width: 24px; height: 24px; }
+  .coin-icon::after { font-size: 14px; line-height: 24px; }
+  .cell { font-size: clamp(56px, 9vw, 96px); }
+  .display-value { font-size: 30px; }
+  .bet-btn, .mult-btn { font-size: 18px; padding: 10px 18px; min-width: 80px; }
+  .bet-btn small, .mult-btn small { font-size: 10px; }
+  .spin-btn { font-size: 30px; padding: 22px; letter-spacing: 0.25em; }
+  .get-gold-btn { font-size: 18px; padding: 14px; }
+  .big-coin { width: 320px; height: 320px; }
+  .big-coin-mark { font-size: 180px; }
+  .clicker-instructions { font-size: 17px; max-width: 540px; }
+  .win-banner-text { font-size: 48px; padding: 22px 48px; }
+}
+
+/* Wide desktop / large iPad landscape */
+@media (min-width: 1200px) {
+  .screen { max-width: 840px; }
+  .cell { font-size: clamp(64px, 7vw, 104px); }
+}
+
+/* ---------- Mobile/tablet landscape with short height ----------
+   Switch the cabinet to a 2-column grid (reels left, controls right)
+   so a typical 844x390 phone landscape fits everything on screen. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .screen {
+    max-width: 100%;
+    padding: 6px 16px 16px;
+    padding-left:  max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .topbar { margin-bottom: 4px; }
+  .neon-title { font-size: 22px; }
+  .neon-title.small { font-size: 18px; }
+  .balance-pill { font-size: 14px; padding: 4px 10px; }
+  .coin-icon { width: 18px; height: 18px; }
+  .coin-icon::after { font-size: 11px; line-height: 18px; }
+  .theme-bar { margin: 0 0 4px; font-size: 10px; gap: 6px; }
+  .theme-select { padding: 3px 22px 3px 8px; font-size: 12px; }
+
+  .cabinet {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-areas:
+      "top    top"
+      "reels  controls"
+      "disp   controls"
+      "bot    bot";
+    column-gap: 14px;
+    row-gap: 6px;
+    padding: 10px 12px;
+    border-radius: 16px;
+  }
+  .cabinet > .top-trim    { grid-area: top;    margin: 0; height: 10px; }
+  .cabinet > .bottom-trim { grid-area: bot;    margin: 0; height: 10px; }
+  .reels-frame            { grid-area: reels; }
+  .display-row            { grid-area: disp;   margin-top: 0; }
+  .controls               { grid-area: controls; margin-top: 0; gap: 6px; align-self: center; }
+  .cabinet::before, .cabinet::after { display: none; }
+
+  /* Cells size off viewport HEIGHT so they fit a short viewport */
+  .cell { font-size: clamp(28px, 13vh, 56px); }
+
+  .display-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .display-box { padding: 4px 8px; }
+  .display-value { font-size: 18px; }
+  .display-label { font-size: 9px; letter-spacing: 0.15em; }
+
+  .control-label { font-size: 9px; margin-bottom: 2px; letter-spacing: 0.2em; }
+  .control-hint { display: none; }
+  .bet-btn, .mult-btn {
+    padding: 4px 8px;
+    font-size: 13px;
+    min-width: 48px;
+    border-radius: 8px;
+  }
+  .bet-btn small, .mult-btn small { font-size: 8px; }
+  .spin-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin-top: 2px;
+    letter-spacing: 0.15em;
+    border-width: 2px;
+    box-shadow:
+      0 0 12px rgba(255, 90, 100, 0.5),
+      0 4px 0 var(--red-deep),
+      inset 0 0 12px rgba(0,0,0,0.4);
+  }
+  .get-gold-btn { padding: 6px 8px; font-size: 12px; margin-top: 0; }
+
+  .paytable-toggle { margin-top: 8px; padding: 4px 12px; font-size: 12px; }
+  .message { margin-top: 6px; font-size: 12px; }
+
+  /* Clicker screen in landscape */
+  .clicker-area { padding: 16px 12px 8px; }
+  .clicker-instructions { font-size: 12px; max-width: 380px; margin-bottom: 12px; }
+  .big-coin { width: 150px; height: 150px; }
+  .big-coin-face { border-width: 6px; }
+  .big-coin-mark { font-size: 78px; }
+  .clicker-stats { margin-top: 14px; font-size: 13px; }
+  .ghost-btn { margin-top: 12px; padding: 8px 18px; font-size: 13px; }
+
+  .win-banner-text { font-size: 24px; padding: 10px 22px; }
 }
