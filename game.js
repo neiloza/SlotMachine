@@ -13,7 +13,7 @@
     { key: "lemon",   glyph: "🍋", weight: 25, payout: 8   },
     { key: "bell",    glyph: "🔔", weight: 20, payout: 16  },
     { key: "star",    glyph: "⭐", weight: 12, payout: 35  },
-    { key: "seven",   glyph: "7️⃣", weight: 6,  payout: 100 },
+    { key: "seven",   glyph: "7",  weight: 6,  payout: 100 },
     { key: "diamond", glyph: "💎", weight: 2,  payout: 500 },
   ];
 
@@ -155,6 +155,7 @@
     for (let r = 0; r < 3; r++) {
       for (let row = 0; row < 3; row++) {
         cellEls[r][row].textContent = state.grid[r][row].glyph;
+        cellEls[r][row].dataset.symbol = state.grid[r][row].key;
         cellEls[r][row].classList.remove("win-flash");
       }
     }
@@ -193,7 +194,13 @@
     paytableBody.innerHTML = SYMBOLS
       .slice()
       .reverse()
-      .map(s => `<tr><td class="symbol">${s.glyph}${s.glyph}${s.glyph}</td><td>${s.payout}× line bet</td></tr>`)
+      .map(s => {
+        const triple = s.glyph + s.glyph + s.glyph;
+        const cell = s.key === "seven"
+          ? `<span class="seven-symbol">${triple}</span>`
+          : triple;
+        return `<tr><td class="symbol">${cell}</td><td>${s.payout}×</td></tr>`;
+      })
       .join("");
   }
 
@@ -238,6 +245,17 @@
 
     reelEls.forEach(r => r.classList.add("spinning"));
 
+    // Rapidly cycle each reel's visible symbols to simulate scrolling reels.
+    const spinIntervals = reelEls.map((_, i) => {
+      return setInterval(() => {
+        for (let row = 0; row < 3; row++) {
+          const sym = pickSymbol();
+          cellEls[i][row].textContent = sym.glyph;
+          cellEls[i][row].dataset.symbol = sym.key;
+        }
+      }, 55);
+    });
+
     const reelStopDelays = [550, 800, 1100];
     const newGrid = [];
     for (let i = 0; i < 3; i++) {
@@ -246,10 +264,12 @@
 
     await Promise.all(reelStopDelays.map((delay, i) => new Promise(resolve => {
       setTimeout(() => {
+        clearInterval(spinIntervals[i]);
         state.grid[i] = newGrid[i];
         reelEls[i].classList.remove("spinning");
         for (let row = 0; row < 3; row++) {
           cellEls[i][row].textContent = newGrid[i][row].glyph;
+          cellEls[i][row].dataset.symbol = newGrid[i][row].key;
         }
         resolve();
       }, delay);
@@ -391,15 +411,28 @@
       save();
     });
 
+    function closePaytable() {
+      paytable.setAttribute("hidden", "");
+      paytableToggle.setAttribute("aria-expanded", "false");
+    }
+    function openPaytable() {
+      paytable.removeAttribute("hidden");
+      paytableToggle.setAttribute("aria-expanded", "true");
+    }
     paytableToggle.addEventListener("click", () => {
-      const open = paytable.hasAttribute("hidden") ? true : false;
-      if (open) {
-        paytable.removeAttribute("hidden");
-        paytableToggle.setAttribute("aria-expanded", "true");
-      } else {
-        paytable.setAttribute("hidden", "");
-        paytableToggle.setAttribute("aria-expanded", "false");
-      }
+      if (paytable.hasAttribute("hidden")) openPaytable();
+      else closePaytable();
+    });
+    paytable.addEventListener("click", (ev) => {
+      if (ev.target !== paytable) return;
+      const rect = paytable.getBoundingClientRect();
+      const inside =
+        ev.clientX >= rect.left && ev.clientX <= rect.right &&
+        ev.clientY >= rect.top  && ev.clientY <= rect.bottom;
+      if (!inside) closePaytable();
+    });
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && !paytable.hasAttribute("hidden")) closePaytable();
     });
 
     document.addEventListener("keydown", (ev) => {
