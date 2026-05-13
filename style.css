@@ -266,6 +266,7 @@ button, select, [role="radio"] {
   min-height: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .cabinet-trim {
@@ -849,11 +850,22 @@ button, select, [role="radio"] {
 @media (max-width: 480px) {
   .neon-title { font-size: 26px; }
   .balance-pill { font-size: 16px; padding: 5px 10px; }
+  .cabinet { padding: 10px 12px; }
+  .cabinet-trim { height: 8px; margin: 0 0 6px; }
+  .cabinet-trim.bottom-trim { margin: 6px 0 0; }
   .cell { font-size: clamp(34px, min(11vw, 8.5vh), 64px); }
+  .display-row { margin-top: 6px; gap: 8px; }
+  .display-box { padding: 3px 10px; }
   .display-value { font-size: 20px; }
-  .bet-btn, .mult-btn { min-width: 56px; padding: 6px 10px; font-size: 14px; }
-  .spin-btn { font-size: 20px; padding: 11px; }
-  .get-gold-btn { font-size: 14px; padding: 8px; }
+  .display-label { font-size: 9px; letter-spacing: 0.18em; }
+  .controls { margin-top: 6px; gap: 4px; }
+  .control-label { font-size: 9px; margin-bottom: 2px; letter-spacing: 0.2em; }
+  .control-hint { font-size: 10px; margin-top: 1px; }
+  .bet-btn, .mult-btn { min-width: 52px; padding: 5px 10px; font-size: 14px; }
+  .spin-btn { font-size: 18px; padding: 8px; margin-top: 2px; }
+  .get-gold-btn { font-size: 13px; padding: 6px 10px; margin-top: 2px; }
+  .paytable-toggle { font-size: 11px; padding: 3px 12px; margin-top: 4px; }
+  .message { margin-top: 2px; font-size: 12px; }
   .big-coin { width: 200px; height: 200px; }
   .big-coin-mark { font-size: 100px; }
   .win-banner-text { font-size: 28px; padding: 14px 24px; }
@@ -868,14 +880,14 @@ button, select, [role="radio"] {
   .coin-icon::after { font-size: 11px; line-height: 18px; }
   .theme-bar { font-size: 10px; }
   .theme-select { font-size: 12px; padding: 4px 24px 4px 8px; }
-  .cabinet { padding: 10px; }
+  .cabinet { padding: 8px 10px; }
   .cell { font-size: clamp(30px, min(11vw, 8vh), 52px); }
   .display-value { font-size: 18px; }
   .display-label { font-size: 9px; letter-spacing: 0.15em; }
-  .bet-btn, .mult-btn { min-width: 48px; padding: 5px 8px; font-size: 13px; }
+  .bet-btn, .mult-btn { min-width: 46px; padding: 4px 8px; font-size: 13px; }
   .bet-btn small, .mult-btn small { font-size: 8px; }
-  .spin-btn { font-size: 18px; padding: 10px; }
-  .get-gold-btn { padding: 8px; font-size: 13px; }
+  .spin-btn { font-size: 16px; padding: 7px; margin-top: 2px; }
+  .get-gold-btn { padding: 5px 8px; font-size: 12px; margin-top: 2px; }
 }
 
 /* Tablet portrait + small landscape — more breathing room */
