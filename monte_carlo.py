@@ -39,8 +39,8 @@ MULTIPLIERS = [1, 3, 5, 10]
 STARTING_COINS = 100
 N_SIMULATIONS  = 10_000
 
-# Simulation uses default in-game settings
-BET        = 1   # 1-coin bet → 1 active payline (middle row)
+# Simulation uses bet=3 → all 5 paylines (3 rows + 2 diagonals)
+BET        = 3   # 3-coin bet → 5 active paylines
 MULTIPLIER = 1   # 1× multiplier
 
 
