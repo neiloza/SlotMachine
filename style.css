@@ -1011,3 +1011,53 @@ button, select, [role="radio"] {
 
   .win-banner-text { font-size: 24px; padding: 10px 22px; }
 }
+
+/* ---------- Bottom tab bar ---------- */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(50px + env(safe-area-inset-bottom));
+  background: rgba(15, 0, 5, 0.92);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  backdrop-filter: blur(22px) saturate(1.4);
+  border-top: 1px solid rgba(255, 210, 74, 0.22);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 300;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--gold);
+  padding: 2px 32px 0;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-icon {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 4px rgba(255, 210, 74, 0.5));
+}
+
+.tab-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+/* Push screen content above the tab bar */
+.screen {
+  padding-bottom: calc(58px + env(safe-area-inset-bottom));
+}
