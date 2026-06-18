@@ -1,4 +1,4 @@
-const CACHE = 'lucky-slots-v1';
+const CACHE = 'lucky-slots-v2';
 
 const PRECACHE = [
   '/',
