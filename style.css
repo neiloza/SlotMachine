@@ -136,7 +136,8 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: radial-gradient(circle at 50% 0%, var(--bg-2) 0%, var(--bg) 55%, var(--bg-deep) 100%);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle at 50% 0%, var(--bg-2) 0%, var(--bg) 55%, var(--bg-deep) 100%);
   transition: background 0.4s ease;
   font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
   color: var(--cream);
@@ -1019,9 +1020,9 @@ button, select, [role="radio"] {
   left: 0;
   right: 0;
   height: calc(50px + env(safe-area-inset-bottom));
-  background: rgba(15, 0, 5, 0.92);
-  -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  backdrop-filter: blur(22px) saturate(1.4);
+  background: #0f0005;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   border-top: 1px solid rgba(255, 210, 74, 0.22);
   display: flex;
   align-items: flex-start;
