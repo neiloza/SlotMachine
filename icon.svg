@@ -5,8 +5,8 @@
       <stop offset="100%" stop-color="#4a0814"/>
     </linearGradient>
     <linearGradient id="cabinet-grad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3a0010"/>
-      <stop offset="100%" stop-color="#0f0004"/>
+      <stop offset="0%" stop-color="#6a1020"/>
+      <stop offset="100%" stop-color="#3e0810"/>
     </linearGradient>
     <radialGradient id="coin-face" cx="38%" cy="32%" r="68%">
       <stop offset="0%"   stop-color="#fffde8"/>
