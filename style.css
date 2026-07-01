@@ -1019,7 +1019,7 @@ button, select, [role="radio"] {
   bottom: 0;
   left: 0;
   right: 0;
-  height: calc(50px + env(safe-area-inset-bottom));
+  height: calc(30px + env(safe-area-inset-bottom));
   background: #0f0005;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
@@ -1027,7 +1027,7 @@ button, select, [role="radio"] {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 6px;
+  padding-top: 4px;
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 300;
 }
@@ -1036,23 +1036,23 @@ button, select, [role="radio"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   background: none;
   border: none;
   color: var(--gold);
-  padding: 2px 32px 0;
+  padding: 0 32px;
   cursor: default;
   -webkit-tap-highlight-color: transparent;
 }
 
 .tab-icon {
-  width: 26px;
-  height: 26px;
+  width: 16px;
+  height: 16px;
   filter: drop-shadow(0 0 4px rgba(255, 210, 74, 0.5));
 }
 
 .tab-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--gold);
@@ -1060,5 +1060,5 @@ button, select, [role="radio"] {
 
 /* Push screen content above the tab bar */
 .screen {
-  padding-bottom: calc(58px + env(safe-area-inset-bottom));
+  padding-bottom: calc(38px + env(safe-area-inset-bottom));
 }
